@@ -1,16 +1,45 @@
 {
-    "name": "myweather",
-    "version": "1.0.0",
-    "description": "weather app implemented in vanilla JS",
-    "scripts": {
-        "start": "parcel index.html",
-        "build": "parcel build index.html"
-    },
-    "author": "Bartosz Gębka",
-    "license": "ISC",
-    "devDependencies": {
-        "@parcel/transformer-sass": "^2.7.0",
-        "parcel": "^2.7.0",
-        "prettier": "2.7.1"
-    }
+	"name": "myweather",
+	"version": "1.0.0",
+	"description": "weather app implemented in vanilla JS",
+	"scripts": {
+		"start": "parcel index.html",
+		"format": "prettier --write src",
+		"lint": "eslint src/js",
+		"lint-style": "stylelint src/sass",
+		"build": "parcel build index.html && npm run format && npm run lint && npm run lint-style"
+	},
+	"author": "Bartosz Gębka",
+	"license": "ISC",
+	"devDependencies": {
+		"@parcel/transformer-sass": "^2.7.0",
+		"eslint": "^8.26.0",
+		"eslint-config-prettier": "^8.5.0",
+		"husky": "^8.0.1",
+		"lint-staged": "^13.0.3",
+		"parcel": "^2.7.0",
+		"prettier": "2.7.1",
+		"stylelint": "^14.14.0",
+		"stylelint-config-prettier": "^9.0.3",
+		"stylelint-config-prettier-scss": "^0.0.1",
+		"stylelint-config-recommended": "^9.0.0",
+		"stylelint-config-standard-scss": "^6.0.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"src/js/*.js": [
+			"prettier --write",
+			"eslint",
+			"git add"
+		],
+		"src/sass/*.scss": [
+			"prettier --write",
+			"stylelint",
+			"git add"
+		]
+	}
 }
