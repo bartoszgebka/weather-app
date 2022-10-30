@@ -4,7 +4,7 @@
 	"description": "weather app implemented in vanilla JS",
 	"scripts": {
 		"start": "parcel index.html",
-		"format": "prettier --write src",
+		"format": "prettier --ignore-path .gitignore --write .",
 		"lint": "eslint src/js",
 		"lint-style": "stylelint src/sass",
 		"build": "parcel build index.html && npm run format && npm run lint && npm run lint-style"
@@ -33,12 +33,12 @@
 	"lint-staged": {
 		"src/js/*.js": [
 			"prettier --write",
-			"eslint",
+			"eslint --fix",
 			"git add"
 		],
 		"src/sass/*.scss": [
 			"prettier --write",
-			"stylelint",
+			"stylelint --fix",
 			"git add"
 		]
 	}
