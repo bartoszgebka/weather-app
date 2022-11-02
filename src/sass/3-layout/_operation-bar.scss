@@ -1,0 +1,28 @@
+@use "src/sass/1-abstracts/index" as *;
+@use "sass:color";
+
+.operation-bar {
+	grid-area: operations;
+	width: 100vw;
+	position: sticky;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-block: to-rem(10px);
+	background: $bg-operations;
+	border-top: $border-regular;
+
+	&__icon {
+		cursor: pointer;
+		line-height: 0;
+
+		> img {
+			width: to-rem(30px);
+		}
+	}
+
+	@include media-breakpoint-min(medium) {
+		display: none;
+	}
+}

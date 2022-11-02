@@ -1,0 +1,46 @@
+@use "sass:math";
+@use "sass:map";
+@use "breakpoints" as *;
+@use "variables" as *;
+
+@function to-rem($size) {
+	@return math.div($size, 16px) * 1rem;
+}
+
+@function clamped($min-px, $max-px, $min-bp: small, $max-bp: large) {
+	$breakpoint-value-min: get-breakpoint($min-bp);
+	$breakpoint-value-max: get-breakpoint($max-bp);
+	$slope: math.div(
+		$max-px - $min-px,
+		$breakpoint-value-max - $breakpoint-value-min
+	);
+	$slope-vw: $slope * 100;
+	$intercept-rems: to-rem($min-px - $slope * $breakpoint-value-min);
+	$min-rems: to-rem($min-px);
+	$max-rems: to-rem($max-px);
+	@return clamp(
+		#{$min-rems},
+		#{$slope-vw}vw + #{$intercept-rems},
+		#{$max-rems}
+	);
+}
+
+@function get-breakpoint($breakpoint-name) {
+	$breakpoint-value: map.get($breakpoints, $breakpoint-name);
+
+	@if not $breakpoint-value {
+		@error "Breakpoint #{$breakpoint-name} not found.";
+	}
+
+	@return $breakpoint-value;
+}
+
+@function get-color($color-name, $colors: $theme-colors) {
+	$color-value: map.get($colors, $color-name);
+
+	@if not $color-value {
+		@error "Color #{$color-name} not found.";
+	}
+
+	@return $color-value;
+}

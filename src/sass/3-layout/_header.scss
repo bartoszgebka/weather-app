@@ -1,0 +1,49 @@
+@use "src/sass/1-abstracts/index" as *;
+
+.header {
+	padding-block: to-rem(15px);
+	grid-area: header;
+
+	> .container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: to-rem(10px);
+	}
+
+	&__icon {
+		width: clamped(24px, 36px);
+	}
+
+	&__title {
+		display: flex;
+		align-items: center;
+		@include regular-text-shadow;
+	}
+
+	&__subtitle {
+		font-size: $fs-header-subtitle;
+		font-weight: 400;
+		@include regular-text-shadow;
+	}
+
+	&__search {
+		cursor: pointer;
+		display: none;
+		background: none;
+		border: none;
+		@include media-breakpoint-min(medium) {
+			display: block;
+			line-height: 0;
+
+			> img {
+				width: clamped(35px, 40px, medium, large);
+			}
+		}
+	}
+}

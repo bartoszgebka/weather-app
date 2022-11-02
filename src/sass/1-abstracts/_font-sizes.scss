@@ -1,0 +1,9 @@
+@use "functions" as *;
+
+$fs-h1: clamped(23px, 30px);
+$fs-h2: clamped(48px, 55px);
+$fs-h3: clamped(18px, 23px);
+$fs-header-subtitle: clamped(18px, 21px);
+$fs-weather-desc: clamped(24px, 32px);
+$fs-weather-min-max: clamped(20px, 26px);
+$fs-accordion: clamped(18px, 23px);

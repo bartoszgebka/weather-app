@@ -1,3 +1,4 @@
-body {
-	background-color: blue;
-}
+@use "2-base" as base;
+@use "3-layout" as layout;
+@use "4-components" as components;
+@use "5-pages" as pages;

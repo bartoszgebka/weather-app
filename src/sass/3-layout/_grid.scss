@@ -1,0 +1,12 @@
+@use "../1-abstracts" as *;
+
+.grid {
+	display: grid;
+	gap: to-rem(15px);
+
+	&--2-col-md {
+		@include media-breakpoint-min(medium) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}
