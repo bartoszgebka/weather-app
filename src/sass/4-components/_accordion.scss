@@ -1,0 +1,154 @@
+@use "../1-abstracts" as *;
+@use "sass:color";
+
+.accordion {
+	$accordion: &;
+
+	font-family: "Open Sans", sans-serif;
+	overflow: hidden;
+
+	&__title {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		&::after {
+			content: "";
+			width: $fs-accordion;
+			height: $fs-accordion;
+			background-size: $fs-accordion;
+			background-image: $ac-arrow-icon;
+			background-repeat: no-repeat;
+		}
+
+		&:not(&--collapsed) {
+			&::after {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+
+	&__header {
+		@include display-header;
+
+		cursor: pointer;
+		padding: to-rem(15px);
+		transition: background-color 0.2s ease-in-out;
+		border-radius: 10px;
+		background: $bg-primary;
+
+		&:hover {
+			background: $bg-primary-hover;
+		}
+
+		&:has(+ #{$accordion}__list--show) {
+			border-radius: 10px 10px 0 0;
+		}
+	}
+
+	&__list {
+		@include accordion-list;
+	}
+
+	&__item {
+		@include accordion-item;
+
+		font-size: $fs-accordion;
+
+		.item-inner {
+			min-height: to-rem(50px);
+			padding-inline: to-rem(15px);
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			.item__title {
+				flex: 0 0 to-rem(150px);
+			}
+
+			.item__icon {
+				display: flex;
+				align-items: center;
+
+				> img {
+					width: clamped(40px, 45px);
+				}
+
+				&--sm {
+					> img {
+						width: clamped(20px, 30px);
+					}
+				}
+			}
+
+			.item__value {
+				&:has(.item__value--primary) {
+					flex: 0 0 to-rem($ac-item-value-width-md);
+					@include media-breakpoint-max(small) {
+						flex: 0 0 to-rem($ac-item-value-width-sm);
+					}
+				}
+
+				flex: 0 0 to-rem($ac-item-value-width-sm);
+				display: flex;
+				gap: to-rem(10px);
+
+				&--primary,
+				&--secondary {
+					flex: 0 0 to-rem(60px);
+					text-align: right;
+					@include media-breakpoint-max(small) {
+						flex: 0 0 to-rem(50px);
+					}
+				}
+
+				&--secondary {
+					opacity: 0.7;
+				}
+			}
+		}
+	}
+
+	&--flatten-xs {
+		#{$accordion}__header {
+			display: none;
+		}
+
+		#{$accordion}__list {
+			display: flex;
+			justify-content: space-evenly;
+			border-radius: 10px;
+			background: $bg-primary;
+		}
+
+		#{$accordion}__item {
+			border-radius: 0;
+			background: none;
+			border: none;
+
+			.item-inner {
+				gap: to-rem(10px);
+			}
+
+			.item__title {
+				display: none;
+			}
+		}
+
+		@include media-breakpoint-min(medium) {
+			#{$accordion}__header {
+				@include display-header;
+			}
+			#{$accordion}__item {
+				@include accordion-item;
+
+				.item__title {
+					display: inline;
+				}
+			}
+			#{$accordion}__list {
+				@include accordion-list;
+			}
+		}
+	}
+}

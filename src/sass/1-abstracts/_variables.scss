@@ -1,0 +1,51 @@
+@use "sass:color";
+@use "sass:map";
+
+// colors
+$theme-colors: (
+	"primary": #1f76a5,
+	"secondary": #ffab0b,
+);
+$grays: (
+	"500": #776a6a,
+	"800": #27272a,
+);
+$text-color: #fff;
+$weather-bg: (
+	"day": (
+		clear:
+			linear-gradient(134.86deg, #38bdf8 2.92%, #92ddfe 43.97%, #38bdf8 97.29%),
+		clouds:
+			linear-gradient(134.86deg, #a5b1b6 2.92%, #91c4db 43.97%, #a5b1b6 97.29%),
+		rain:
+			linear-gradient(134.86deg, #0d4e8a 2.92%, #3aa4d2 43.97%, #0d4e8a 97.29%),
+		thunderstorm:
+			linear-gradient(134.86deg, #0a4780 2.92%, #000c23 43.97%, #0a4780 97.29%),
+		snow:
+			linear-gradient(134.86deg, #a0d6d6 2.92%, #b3d6e6 43.97%, #a0d6d6 97.29%),
+	),
+	"night": (
+		clear:
+			linear-gradient(134.86deg, #212122 2.92%, #000 43.97%, #212122 94.83%),
+		clouds:
+			linear-gradient(134.86deg, #333335 2.92%, #000 43.97%, #333335 94.83%),
+		rain: linear-gradient(134.86deg, #000 2.92%, #021622 43.97%, #000 94.83%),
+		thunderstorm:
+			linear-gradient(134.86deg, #10143c 2.92%, #06011b 43.97%, #10143c 94.83%),
+		snow: linear-gradient(180deg, #0b0d0f 0%, #2c353c 73.44%, #50595f 100%),
+	),
+);
+
+// backgrounds
+$bg-primary: rgba(map.get($theme-colors, primary), 0.3);
+$bg-primary-hover: rgba(map.get($theme-colors, primary), 0.4);
+$bg-operations: #5db6e2;
+
+// borders
+$border-sm: 0.5px solid color.adjust($text-color, $alpha: -0.5);
+$border-regular: 1px solid color.adjust($text-color, $alpha: -0.5);
+
+// accordion
+$ac-arrow-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M6 9L12 15L18 9' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+$ac-item-value-width-sm: 100px;
+$ac-item-value-width-md: 140px;

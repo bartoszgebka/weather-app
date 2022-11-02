@@ -1,0 +1,47 @@
+@use "functions" as *;
+@use "variables" as *;
+
+@mixin media-breakpoint-min($breakpoint-name) {
+	$breakpoint-value: get-breakpoint($breakpoint-name);
+
+	@media only screen and (min-width: $breakpoint-value) {
+		@content;
+	}
+}
+
+@mixin media-breakpoint-max($breakpoint-name) {
+	$breakpoint-value: get-breakpoint($breakpoint-name);
+
+	@media only screen and (max-width: $breakpoint-value) {
+		@content;
+	}
+}
+
+@mixin regular-text-shadow() {
+	text-shadow: 0 2px 2px rgb(112 108 108 / 25%);
+}
+
+// accordion
+@mixin display-header() {
+	display: block;
+}
+
+@mixin accordion-item() {
+	background: $bg-primary;
+	border-top: $border-sm;
+
+	&:last-child {
+		border-radius: 0 0 10px 10px;
+	}
+}
+
+@mixin accordion-list() {
+	display: none;
+	justify-content: normal;
+	border-radius: 0;
+	background: none;
+
+	&--show {
+		display: block;
+	}
+}
