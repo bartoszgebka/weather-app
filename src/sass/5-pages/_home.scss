@@ -4,12 +4,12 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: to-rem(15px);
+	gap: to-rem(10px);
 	margin-bottom: to-rem(30px);
 	@include regular-text-shadow;
 
 	&__icon {
-		width: clamped(250px, 350px);
+		width: clamped(230px, 330px);
 		height: auto;
 	}
 
