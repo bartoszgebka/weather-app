@@ -1,14 +1,5 @@
 @use "../1-abstracts" as *;
 
-// generate bg gradient class, ex. .bg-day--clear, .bg-day--clouds
-@each $time-of-day, $weather-map in $weather-bg {
-	@each $weather, $gradient in $weather-map {
-		.bg-#{$time-of-day}--#{inspect($weather)} {
-			background: $gradient;
-		}
-	}
-}
-
 .weather {
 	display: flex;
 	flex-direction: column;

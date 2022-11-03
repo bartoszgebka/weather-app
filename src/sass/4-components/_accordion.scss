@@ -30,10 +30,10 @@
 
 	&__header {
 		@include display-header;
+		@include transition-bg-color;
 
 		cursor: pointer;
 		padding: to-rem(15px);
-		transition: background-color 0.2s ease-in-out;
 		border-radius: 10px;
 		background: $bg-primary;
 

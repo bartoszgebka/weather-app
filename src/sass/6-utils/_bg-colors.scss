@@ -1,0 +1,17 @@
+@use "../1-abstracts" as *;
+
+// generate bg gradient class, ex. .bg-day--clear, .bg-day--clouds
+@each $time-of-day, $weather-map in $weather-bg {
+	@each $weather, $gradient in $weather-map {
+		.bg-#{$time-of-day}--#{inspect($weather)} {
+			background: $gradient;
+		}
+	}
+}
+
+// generate bg gray class, ex. .bg-gray--500, .bg-gray--800
+@each $step, $color in $grays {
+	.bg-gray--#{$step} {
+		background: $color;
+	}
+}

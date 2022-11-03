@@ -21,6 +21,10 @@
 	text-shadow: 0 2px 2px rgb(112 108 108 / 25%);
 }
 
+@mixin transition-bg-color() {
+	transition: background-color 0.2s ease-in-out;
+}
+
 // accordion
 @mixin display-header() {
 	display: block;

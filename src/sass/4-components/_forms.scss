@@ -1,0 +1,18 @@
+@use "../1-abstracts" as *;
+
+.form-input-text {
+	display: block;
+	width: 100%;
+	padding: to-rem(10px) to-rem(12px);
+	font-size: $fs-input;
+	font-family: "Open Sans", sans-serif;
+	color: get-color("500", $grays);
+	border-radius: to-rem(10px);
+	border: 1px solid get-color("500", $grays);
+
+	&:focus {
+		outline: 0;
+		border: 1px solid get-color(primary);
+		box-shadow: 0 0 0 0.15rem get-color(primary);
+	}
+}
