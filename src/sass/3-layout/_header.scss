@@ -17,12 +17,13 @@
 	}
 
 	&__icon {
-		width: clamped(24px, 36px);
+		width: clamped(28px, 36px);
 	}
 
 	&__title {
 		display: flex;
 		align-items: center;
+		column-gap: to-rem(5px);
 		@include regular-text-shadow;
 	}
 
