@@ -37,7 +37,7 @@
 
 		cursor: pointer;
 		padding: to-rem(15px);
-		border-radius: 10px;
+		border-radius: to-rem($border-radius);
 		background: $bg-primary;
 
 		&:hover {
@@ -45,7 +45,7 @@
 		}
 
 		&:not(&:has(> #{$accordion}__title--collapsed)) {
-			border-radius: 10px 10px 0 0;
+			border-radius: to-rem($border-radius) to-rem($border-radius) 0 0;
 		}
 	}
 
@@ -119,7 +119,7 @@
 		#{$accordion}__list {
 			display: flex;
 			justify-content: space-evenly;
-			border-radius: 10px;
+			border-radius: to-rem($border-radius);
 			background: $bg-primary;
 		}
 

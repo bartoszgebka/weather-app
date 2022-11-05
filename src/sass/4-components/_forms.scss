@@ -7,7 +7,7 @@
 	font-size: $fs-input;
 	font-family: "Open Sans", sans-serif;
 	color: get-color("500", $grays);
-	border-radius: to-rem(10px);
+	border-radius: to-rem($border-radius);
 	border: 1px solid get-color("500", $grays);
 
 	&:focus {

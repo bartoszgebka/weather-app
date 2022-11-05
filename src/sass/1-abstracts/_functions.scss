@@ -10,19 +10,12 @@
 @function clamped($min-px, $max-px, $min-bp: small, $max-bp: large) {
 	$breakpoint-value-min: get-breakpoint($min-bp);
 	$breakpoint-value-max: get-breakpoint($max-bp);
-	$slope: math.div(
-		$max-px - $min-px,
-		$breakpoint-value-max - $breakpoint-value-min
-	);
+	$slope: math.div($max-px - $min-px, $breakpoint-value-max - $breakpoint-value-min);
 	$slope-vw: $slope * 100;
 	$intercept-rems: to-rem($min-px - $slope * $breakpoint-value-min);
 	$min-rems: to-rem($min-px);
 	$max-rems: to-rem($max-px);
-	@return clamp(
-		#{$min-rems},
-		#{$slope-vw}vw + #{$intercept-rems},
-		#{$max-rems}
-	);
+	@return clamp(#{$min-rems}, #{$slope-vw}vw + #{$intercept-rems}, #{$max-rems});
 }
 
 @function get-breakpoint($breakpoint-name) {

@@ -15,3 +15,10 @@
 		background: $color;
 	}
 }
+
+// generate bg notification class, ex. .notification--error
+@each $type, $color in $notification-colors {
+	.notification--#{$type} {
+		background: $color;
+	}
+}

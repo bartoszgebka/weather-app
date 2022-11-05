@@ -1,5 +1,8 @@
+@use "../1-abstracts" as *;
+
 html {
 	height: 100%;
+	background-color: $bg-primary;
 }
 
 body {
