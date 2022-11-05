@@ -19,6 +19,8 @@
 			background-size: $fs-accordion;
 			background-image: $ac-arrow-icon;
 			background-repeat: no-repeat;
+
+			@include accordion-transition(transform);
 		}
 
 		&:not(&--collapsed) {
@@ -31,6 +33,7 @@
 	&__header {
 		@include display-header;
 		@include transition-bg-color;
+		@include accordion-transition(border-radius);
 
 		cursor: pointer;
 		padding: to-rem(15px);
@@ -41,7 +44,7 @@
 			background: $bg-primary-hover;
 		}
 
-		&:has(+ #{$accordion}__list--show) {
+		&:not(&:has(> #{$accordion}__title--collapsed)) {
 			border-radius: 10px 10px 0 0;
 		}
 	}
@@ -107,6 +110,7 @@
 		}
 	}
 
+	// on small device accordion is "flatten"
 	&--flatten-xs {
 		#{$accordion}__header {
 			display: none;
@@ -131,13 +135,13 @@
 
 		@include media-breakpoint-min(medium) {
 			#{$accordion}__header {
-				@include display-header;
+				display: block;
 			}
 			#{$accordion}__item {
 				@include accordion-item;
 
 				.item__title {
-					display: inline;
+					display: initial;
 				}
 			}
 			#{$accordion}__list {

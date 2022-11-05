@@ -40,12 +40,23 @@
 }
 
 @mixin accordion-list() {
-	display: none;
-	justify-content: normal;
+	display: block;
+	justify-content: initial;
 	border-radius: 0;
 	background: none;
 
-	&--show {
-		display: block;
+	&:not(.accordion__list--show) {
+		display: none;
 	}
+
+	&--transition {
+		@include accordion-transition(height);
+
+		height: 0;
+		overflow: hidden;
+	}
+}
+
+@mixin accordion-transition($property) {
+	transition: #{$property} 0.35s ease;
 }
