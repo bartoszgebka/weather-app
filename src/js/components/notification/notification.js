@@ -59,9 +59,7 @@ export class Notification extends Component {
 		const notification = this.#containerEl.querySelector(
 			`:scope > .${this.#CLASS_NAME_NOTIFICATION}`
 		);
-		this.#btnCloseEl = notification.querySelector(
-			`.${this.#CLASS_NAME_NOTIFICATION_CLOSE}`
-		);
+		this.#btnCloseEl = notification.querySelector(`.${this.#CLASS_NAME_NOTIFICATION_CLOSE}`);
 
 		this.reload(notification);
 		notification.classList.add(this.#CLASS_NAME_NOTIFICATION_SHOW);

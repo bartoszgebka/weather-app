@@ -19,4 +19,3 @@ setTimeout(() => {
 setTimeout(() => {
 	new Notification({ message: "Nie udało się wczytać danych.", type: "error" });
 }, 3600);
-

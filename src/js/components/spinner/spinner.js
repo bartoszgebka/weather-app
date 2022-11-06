@@ -32,13 +32,11 @@ export class Spinner extends Component {
 			</div>`;
 
 		this.#mainEl.insertAdjacentHTML("afterbegin", markup);
-		return this.#mainEl.querySelector(
-			`:scope > .${this.#CLASS_NAME_BLOCK_SCREEN}`
-		);
+		return this.#mainEl.querySelector(`:scope > .${this.#CLASS_NAME_BLOCK_SCREEN}`);
 	}
 
 	unblock() {
-		if(!this.#blockScreenEl) {
+		if (!this.#blockScreenEl) {
 			throw new Error(`Spinner not found.`);
 		}
 		this.#blockScreenEl.classList.remove(this.#CLASS_NAME_SHOW);
