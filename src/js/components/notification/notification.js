@@ -31,7 +31,7 @@ export class Notification extends Component {
 	#init() {
 		this.#mainEl = this.getElement(document, `${this.#CLASS_NAME_MAIN}`, "querySelector");
 		this.#containerEl = this.#getContainerEl();
-		this.#createNotification();
+		this.#notificationEl = this.#createNotification();
 	}
 
 	#getContainerEl() {
@@ -56,15 +56,17 @@ export class Notification extends Component {
 		</div>`;
 
 		this.#containerEl.insertAdjacentHTML("afterbegin", markup);
-		this.#notificationEl = this.#containerEl.querySelector(
+		const notification = this.#containerEl.querySelector(
 			`:scope > .${this.#CLASS_NAME_NOTIFICATION}`
 		);
-		this.#btnCloseEl = this.#notificationEl.querySelector(
+		this.#btnCloseEl = notification.querySelector(
 			`.${this.#CLASS_NAME_NOTIFICATION_CLOSE}`
 		);
 
-		this.reload(this.#notificationEl);
-		this.#notificationEl.classList.add(this.#CLASS_NAME_NOTIFICATION_SHOW);
+		this.reload(notification);
+		notification.classList.add(this.#CLASS_NAME_NOTIFICATION_SHOW);
+
+		return notification;
 	}
 
 	#remove() {
