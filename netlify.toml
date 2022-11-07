@@ -1,0 +1,4 @@
+[functions]
+    node_bundler = "esbuild"
+[dev]
+    command = "parcel src/index.html"

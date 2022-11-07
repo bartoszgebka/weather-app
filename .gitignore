@@ -3,3 +3,5 @@ dist
 .parcel-cache
 .idea
 myWeather.iml
+.netlify
+.env
