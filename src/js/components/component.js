@@ -1,8 +1,11 @@
 export class Component {
+	CLASS_NAME_MAIN = "main";
 	#componentName;
+	mainEl;
 
 	constructor(name) {
 		this.#componentName = name;
+		this.mainEl = this.getElement(document, `${this.CLASS_NAME_MAIN}`, "querySelector");
 	}
 
 	checkRequiredParameters(...parameters) {
@@ -28,6 +31,10 @@ export class Component {
 	// https://gist.github.com/paulirish/5d52fb081b3570c81e3a
 	reload(el) {
 		el.offsetHeight;
+	}
+
+	clear(el) {
+		el.innerHTML = null;
 	}
 
 	executeCallbackWhenTransitionEnd(element, callback) {

@@ -2,17 +2,14 @@ import { Component } from "../component";
 
 export class Spinner extends Component {
 	// CSS class names
-	#CLASS_NAME_MAIN = "main";
 	#CLASS_NAME_BLOCK_SCREEN = "block-screen";
 	#CLASS_NAME_SHOW = "block-screen--show";
 	#CLASS_NAME_SPINNER = "spinner";
 
-	#mainEl;
 	#blockScreenEl;
 
 	constructor() {
 		super("Spinner");
-		this.#mainEl = this.getElement(document, `${this.#CLASS_NAME_MAIN}`, "querySelector");
 	}
 
 	block() {
@@ -31,8 +28,8 @@ export class Spinner extends Component {
 				</div>
 			</div>`;
 
-		this.#mainEl.insertAdjacentHTML("afterbegin", markup);
-		return this.#mainEl.querySelector(`:scope > .${this.#CLASS_NAME_BLOCK_SCREEN}`);
+		this.mainEl.insertAdjacentHTML("afterbegin", markup);
+		return this.mainEl.querySelector(`:scope > .${this.#CLASS_NAME_BLOCK_SCREEN}`);
 	}
 
 	unblock() {

@@ -33,17 +33,27 @@
 		@include regular-text-shadow;
 	}
 
+	&__operations {
+		display: none;
+		align-items: center;
+		gap: to-rem(15px);
+		@include media-breakpoint-min(medium) {
+			display: flex;
+		}
+	}
+
 	&__operation {
 		cursor: pointer;
-		display: none;
 		background: none;
 		border: none;
-		@include media-breakpoint-min(medium) {
-			display: block;
-			line-height: 0;
 
-			> img {
-				width: clamped(35px, 38px, medium, large);
+		&--icon {
+			@include media-breakpoint-min(medium) {
+				line-height: 0;
+
+				> img {
+					width: clamped(35px, 38px, medium, large);
+				}
 			}
 		}
 	}

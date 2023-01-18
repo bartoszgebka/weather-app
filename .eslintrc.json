@@ -10,5 +10,7 @@
 		"ecmaVersion": "latest",
 		"sourceType": "module"
 	},
-	"rules": {}
+	"rules": {
+		"no-useless-catch": 0
+	}
 }

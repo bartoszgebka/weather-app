@@ -2,7 +2,6 @@ import { Component } from "../component";
 
 export class Notification extends Component {
 	// CSS class names
-	#CLASS_NAME_MAIN = "main";
 	#CLASS_NAME_NOTIFICATIONS_CONTAINER = "notifications";
 	#CLASS_NAME_NOTIFICATION = "notification";
 	#CLASS_NAME_NOTIFICATION_SHOW = "notification--show";
@@ -11,7 +10,6 @@ export class Notification extends Component {
 	#message;
 	#type;
 
-	#mainEl;
 	#containerEl;
 	#notificationEl;
 	#btnCloseEl;
@@ -29,13 +27,12 @@ export class Notification extends Component {
 	}
 
 	#init() {
-		this.#mainEl = this.getElement(document, `${this.#CLASS_NAME_MAIN}`, "querySelector");
 		this.#containerEl = this.#getContainerEl();
 		this.#notificationEl = this.#createNotification();
 	}
 
 	#getContainerEl() {
-		let container = this.#mainEl.querySelector(
+		let container = this.mainEl.querySelector(
 			`:scope > .${this.#CLASS_NAME_NOTIFICATIONS_CONTAINER}`
 		);
 		return container || this.#createContainerEl();
@@ -44,7 +41,7 @@ export class Notification extends Component {
 	#createContainerEl() {
 		const container = document.createElement("div");
 		container.classList.add(this.#CLASS_NAME_NOTIFICATIONS_CONTAINER);
-		this.#mainEl.prepend(container);
+		this.mainEl.prepend(container);
 		return container;
 	}
 

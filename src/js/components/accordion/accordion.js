@@ -11,10 +11,37 @@ export default class Accordion extends Component {
 
 	#isTransitioning = false;
 
-	constructor(element) {
+	constructor(parentElement, config) {
 		super("Accordion");
-		this.checkRequiredParameters(element);
+		this.checkRequiredParameters(parentElement, config, config?.title);
+		const element = this.#createAccordionElement(parentElement, config);
 		element.addEventListener("click", this.#clickHandler.bind(this));
+	}
+
+	#createAccordionElement(parentElement, config) {
+		const markup = `<div class="accordion ${config.isFlatten ? "accordion--flatten-xs" : ""}">
+			<div class="accordion__header">
+				<h3 class="accordion__title">${config.title}</h3>
+			</div>
+			<ul class="accordion__list accordion__list--show">
+			${config.items?.map((item) => this.#generateMarkupItem(item)).join("")}
+			</ul>
+		</div>`;
+		parentElement.insertAdjacentHTML("afterbegin", markup);
+		return parentElement.querySelector(":scope > .accordion");
+	}
+
+	#generateMarkupItem(item) {
+		return `<li class="accordion__item">
+			<div class="item-inner">
+				<span class="item__title">${item.title}:</span>
+				<span class="item__icon item__icon--sm">
+					<img src="${item.image}" />
+				</span>
+				<span class="item__value">${item.value}${item.unit}</span>
+			</div>
+		</li>
+		`;
 	}
 
 	#clickHandler(e) {
