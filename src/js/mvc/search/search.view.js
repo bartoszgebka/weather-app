@@ -35,12 +35,12 @@ export class SearchView extends View {
 		this.#citiesList.addCityClickHandler(handler);
 	}
 
-	renderCities(datas) {
+	renderCities(dataset) {
 		this.#citiesList.clear();
 
 		this.#removeNotFoundMessageIfExists();
 
-		datas.forEach((data) => this.#citiesList.addCity(data));
+		dataset.forEach((d) => this.#citiesList.addCity(d));
 	}
 
 	#removeNotFoundMessageIfExists() {
