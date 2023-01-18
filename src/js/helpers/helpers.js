@@ -15,9 +15,9 @@ export const getTimeOfDay = () => {
 export const getWeatherIcon = (type) => {
 	const timeOfDay = getTimeOfDay();
 	const icons = timeOfDay === "day" ? iconsDay : iconsNight;
-	return `${icons[type]}.svg`;
+	return `${icons[type]}`;
 };
 
 export const getWeatherAddIcon = (type) => {
-	return `${addIcons[type]}.svg`;
+	return `${addIcons[type]}`;
 };
