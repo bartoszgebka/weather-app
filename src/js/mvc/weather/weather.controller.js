@@ -24,14 +24,14 @@ export class WeatherController extends Controller {
 			this.view.render(this.#model.weatherState);
 
 			this.headerService.setData(this.#getTitle());
-			this.headerService.setOperations(
-				this.#getOperations(["header__operation", "header__operation--icon"], searchWithShadow)
-			);
-			this.footerService.setOperations(this.#getOperations(["operation-bar__icon"], search));
 		} catch (error) {
 			console.error(error);
 			this.view.showError(error.message);
 		} finally {
+			this.headerService.setOperations(
+				this.#getOperations(["header__operation", "header__operation--icon"], searchWithShadow)
+			);
+			this.footerService.setOperations(this.#getOperations(["operation-bar__icon"], search));
 			this.view.unblockScreen();
 		}
 	}
