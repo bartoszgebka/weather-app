@@ -46,7 +46,13 @@ export class SearchController extends Controller {
 			this.view.blockScreen();
 
 			await this.#model.getCities(text);
-			this.view.renderCities(this.#model.cities);
+
+			const {cities} = this.#model;
+			if(cities?.length > 0) {
+				this.view.renderCities(this.#model.cities);
+			} else {
+				this.view.citiesNotFound();
+			}
 		} catch (error) {
 			console.error(error);
 			this.view.showError(error.message);

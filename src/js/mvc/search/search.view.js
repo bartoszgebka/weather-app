@@ -3,6 +3,9 @@ import { SearchForm } from "../../components/search-form/search-form";
 import { CitiesList } from "../../components/cities-list/cities.list";
 
 export class SearchView extends View {
+	#CLASS_NAME_RESULTS_NOT_FOUND = "results-not-found";
+
+	#containerEl;
 	#searchForm;
 	#citiesList;
 
@@ -15,9 +18,9 @@ export class SearchView extends View {
 	}
 
 	#createContainer() {
-		const container = document.createElement("div");
-		container.classList.add("container");
-		this.mainElement.append(container);
+		this.#containerEl = document.createElement("div");
+		this.#containerEl.classList.add("container");
+		this.mainElement.append(this.#containerEl);
 	}
 
 	#setBackgrund() {
@@ -34,6 +37,25 @@ export class SearchView extends View {
 
 	renderCities(datas) {
 		this.#citiesList.clear();
-		datas?.forEach((data) => this.#citiesList.addCity(data));
+
+		this.#removeNotFoundMessageIfExists();
+
+		datas.forEach((data) => this.#citiesList.addCity(data));
+	}
+
+	#removeNotFoundMessageIfExists() {
+		const notFoundEl = this.#containerEl.querySelector(`.${this.#CLASS_NAME_RESULTS_NOT_FOUND}`);
+		notFoundEl?.remove();
+	}
+
+	citiesNotFound() {
+		this.#citiesList.clear();
+		this.#removeNotFoundMessageIfExists();
+
+		const notFoundParagraph = document.createElement('p');
+		notFoundParagraph.classList.add(this.#CLASS_NAME_RESULTS_NOT_FOUND);
+		notFoundParagraph.innerText = 'Nie znaleziono wyników';
+
+		this.#containerEl.append(notFoundParagraph);
 	}
 }
