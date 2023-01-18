@@ -52,9 +52,9 @@ export class SearchView extends View {
 		this.#citiesList.clear();
 		this.#removeNotFoundMessageIfExists();
 
-		const notFoundParagraph = document.createElement('p');
+		const notFoundParagraph = document.createElement("p");
 		notFoundParagraph.classList.add(this.#CLASS_NAME_RESULTS_NOT_FOUND);
-		notFoundParagraph.innerText = 'Nie znaleziono wyników';
+		notFoundParagraph.innerText = "Nie znaleziono wyników";
 
 		this.#containerEl.append(notFoundParagraph);
 	}

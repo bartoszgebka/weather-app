@@ -47,8 +47,8 @@ export class SearchController extends Controller {
 
 			await this.#model.getCities(text);
 
-			const {cities} = this.#model;
-			if(cities?.length > 0) {
+			const { cities } = this.#model;
+			if (cities?.length > 0) {
 				this.view.renderCities(this.#model.cities);
 			} else {
 				this.view.citiesNotFound();
