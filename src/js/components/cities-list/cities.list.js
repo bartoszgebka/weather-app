@@ -9,7 +9,6 @@ export class CitiesList extends Component {
 
 	#containerEl;
 	#listEl;
-	#clickHandler;
 
 	constructor() {
 		super("Cities list");

@@ -45,7 +45,8 @@ export class SearchForm extends Component {
 			clearTimeout(this.#typingTimer);
 			this.#typingTimer = setTimeout(() => {
 				this.#inputEl.blur(); // lose focus
-				handler(this.#inputEl.value);
+				handler(this.#inputEl.value)
+					.then(() => this.#inputEl.focus());
 			}, 300);
 		});
 	}
