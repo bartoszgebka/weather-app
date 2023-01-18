@@ -8,12 +8,22 @@ export class SearchModel extends Model {
 		try {
 			if (text) {
 				const data = await this.getData(`${this.#NETLIFY_FUNCTIONS_PATH}/find-city?text=${text}`);
-				this.cities = [...data];
+				this.cities = [...this.#unique(data, ["name.local_names.pl", "country"])];
 			} else {
 				this.cities = [];
 			}
 		} catch (error) {
 			throw error;
 		}
+	}
+
+	#unique(arr, keyProps) {
+		return Object.values(
+			arr.reduce((uniqueMap, entry) => {
+				const key = keyProps.map((k) => entry[k]).join("|");
+				if (!(key in uniqueMap)) uniqueMap[key] = entry;
+				return uniqueMap;
+			}, {})
+		);
 	}
 }
