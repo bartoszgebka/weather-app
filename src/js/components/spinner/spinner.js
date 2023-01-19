@@ -15,7 +15,7 @@ export class Spinner extends Component {
 	block() {
 		this.#blockScreenEl = this.#createBlockScreen();
 		this.reload(this.#blockScreenEl);
-		this.#blockScrenEl.classList.add(this.#CLASS_NAME_SHOW);
+		this.#blockScreenEl.classList.add(this.#CLASS_NAME_SHOW);
 	}
 
 	#createBlockScreen() {
