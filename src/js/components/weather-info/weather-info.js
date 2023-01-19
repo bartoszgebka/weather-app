@@ -36,17 +36,19 @@ export class WeatherInfo extends Component {
 		this.#weatherEl = this.mainEl.querySelector(`:scope > .${this.#CLASS_NAME_WEATHER}`);
 	}
 
-	setData(mainInfo) {
-		this.#createIcon(mainInfo.type);
+	setData(weatherState) {
+		const { weather: mainInfo } = weatherState;
+		this.#createIcon(weatherState);
 		this.#setTemperature(mainInfo.temp);
 		this.#setDescription(mainInfo.description);
 		this.#setMinMax(mainInfo.tempMin, mainInfo.tempMax);
 		this.#renderAccordionAdditionalInformation(mainInfo.info);
 	}
 
-	#createIcon(type) {
+	#createIcon(weatherState) {
+		const { type } = weatherState.weather;
 		const markup = `
-          <img src="${getWeatherIcon(type)}" alt="${type}" class="weather__icon" />
+          <img src="${getWeatherIcon(weatherState)}" alt="${type}" class="weather__icon" />
     `;
 		this.#weatherEl.insertAdjacentHTML("afterbegin", markup);
 	}

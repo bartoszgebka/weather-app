@@ -11,17 +11,18 @@ export class WeatherView extends View {
 	}
 
 	render(weatherState) {
-		this.#setBackgrund(weatherState.weather.type);
-		this.#setWeatherInfo(weatherState.weather);
+		this.#setBackgrund(weatherState);
+		this.#setWeatherInfo(weatherState);
 	}
 
-	#setBackgrund(main) {
-		const timeOfDay = getTimeOfDay();
-		const bgClass = `bg-${timeOfDay}--${main}`;
+	#setBackgrund(weatherState) {
+		const { type } = weatherState.weather;
+		const timeOfDay = getTimeOfDay(weatherState);
+		const bgClass = `bg-${timeOfDay}--${type}`;
 		this.bodyElement.classList.add(bgClass);
 	}
 
-	#setWeatherInfo(weather) {
-		this.#weatherInfo.setData(weather);
+	#setWeatherInfo(weatherState) {
+		this.#weatherInfo.setData(weatherState);
 	}
 }

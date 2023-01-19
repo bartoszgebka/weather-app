@@ -2,10 +2,16 @@ export class WeatherState {
 	coord;
 	city;
 	weather = {};
+	timezone;
+	sunrise;
+	sunset;
 
 	setWeatherData(weatherData) {
 		this.coord = weatherData.coord;
 		this.city = weatherData.name;
+		this.timezone = weatherData.timezone;
+		this.sunrise = weatherData?.sys?.sunrise;
+		this.sunset = weatherData?.sys?.sunset;
 		this.#setWeather(weatherData);
 	}
 
